@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Literal
+from typing import Literal, Optional
 
 
 # "Literal" allows us to specify the exact values that are accepted
@@ -8,7 +8,7 @@ from typing import Literal
 class AddPerson(BaseModel):
     name: str
     age: int
-    role: Literal["admin", "manager", "supporter", "goober"] | None = None
+    role: Optional[Literal["admin", "manager", "supporter", "goober"]] = "goober"
 
 
 class AddPersonResponse(BaseModel):
@@ -17,6 +17,6 @@ class AddPersonResponse(BaseModel):
 
 
 class UpdatePerson(BaseModel):
-    name: str | None = None
-    age: int | None = None
-    role: Literal["admin", "manager", "staff", "customer", "goober"] | None = None
+    name: Optional[str] = None
+    age: Optional[int] = None
+    role: Optional[Literal["admin", "manager", "staff", "customer", "goober"]] = None

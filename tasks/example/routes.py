@@ -104,7 +104,7 @@ def update_person(id: str, updates: UpdatePerson):
     update_data = updates.model_dump(exclude_unset=True)
 
     if not update_data:
-        raise HTTPException(status_code=400, detaile="No fields provided to update")
+        raise HTTPException(status_code=400, detail="No fields provided to update")
 
     result = example_collection.update_one(
         {"_id": object_id}, {"$set": update_data}
